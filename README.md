@@ -1,2 +1,2 @@
 # ImageWatermark
-Huawei's Serverless example, add watermark on image using serverless function
+Huawei's Serverless example, add watermark on image uploaded to OBS by user using serverless function
