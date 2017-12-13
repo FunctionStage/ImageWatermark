@@ -111,7 +111,15 @@ def PostObject(obsAddr, bucket, objName, ak, sk):
     else:
         print('PostObject, common msg: status:', resp.status, ',errorCode:', resp.errorCode, ',errorMessage:', resp.errorMessage)
 
-
+def getObsObjInfo4OBSTrigger(event):
+    s3 = event['Records'][0]['s3']
+    eventName = event['Records'][0]['eventName']
+    bucket = s3['bucket']['name']
+    objName = s3['object']['key']
+    print "*** obsEventName: " + eventName
+    print "*** srcBucketName: " + bucket
+    print "*** srcObjName:" + objName
+    return (bucket, objName)
 
 def getObsObjInfo(event):
     msg = event['record'][0]['smn']['message']
@@ -146,7 +154,7 @@ def watermark_image(fileName):
     return outFileName
     
 def handler(event, context):
-    srcBucket, srcObjName = getObsObjInfo(event)
+    srcBucket, srcObjName = getObsObjInfo4OBSTrigger(event)
     obs_address = context.getUserData('obs_address')
     outputBucket = context.getUserData('obs_output_bucket')
     if obs_address is None:
