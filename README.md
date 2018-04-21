@@ -1,7 +1,7 @@
 # ImageWatermark
 Huawei's Serverless example, add watermark on image uploaded to OBS by user using serverless function
 step in step
-1. create a origin burket and a printwater burket in obs.
+1. create a origin bucket and a printwater bucket in OBS.
 2. create a Agency in IAM.
 3. create a function in FunctionStage.
 4. select the agency your created.
